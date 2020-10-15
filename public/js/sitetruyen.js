@@ -7,7 +7,7 @@ const next = document.querySelector('.next');
 const pre = document.querySelector('.pre');
 const chaper = document.querySelector('.chaper');
 
-let audio = new Audio('audio/1502.mp3');
+let audio = new Audio('audio/2128.mp3');
 
 chaper.innerHTML = audio.getAttribute('src').split('/')[1].split('.')[0];
 
