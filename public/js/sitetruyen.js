@@ -43,22 +43,12 @@ chap.forEach(e => {
         audio.pause();
         audio.src = `audio/${e.innerHTML}.mp3`;
         chaper.innerHTML = e.innerHTML;
+        document.title = `võ luyện đỉnh phong - ${e.innerHTML}`;
         audio.play();
     });
 });
 
-next.addEventListener('click', () => {
-    audio.pause();
-
-    let a = audio.playbackRate;
-
-    let currentChap = Number(audio.getAttribute('src').split('/')[1].split('.')[0]);
-    audio.src = `audio/${currentChap+1}.mp3`;
-    chaper.innerHTML = currentChap + 1;
-
-    audio.play();
-    audio.playbackRate = a;
-});
+next.addEventListener('click',nexts);
 
 pre.addEventListener('click', () => {
     audio.pause();
@@ -68,6 +58,8 @@ pre.addEventListener('click', () => {
     let currentChap = Number(audio.getAttribute('src').split('/')[1].split('.')[0]);
     audio.src = `audio/${currentChap-1}.mp3`;
     chaper.innerHTML = currentChap - 1;
+
+    document.title = `võ luyện đỉnh phong - ${currentChap-1}`;
 
     audio.play();
     audio.playbackRate = a;
@@ -83,7 +75,9 @@ audio.addEventListener('play', () => {
     pause.classList.add('fa-play-circle');
 })
 
-audio.addEventListener('ended', () => {
+audio.addEventListener('ended',nexts);
+
+function nexts(){
     audio.pause();
 
     let a = audio.playbackRate;
@@ -92,20 +86,8 @@ audio.addEventListener('ended', () => {
     audio.src = `audio/${currentChap+1}.mp3`;
     chaper.innerHTML = currentChap + 1;
 
+    document.title = `võ luyện đỉnh phong - ${currentChap+1}`;
+
     audio.play();
     audio.playbackRate = a;
-});
-// audio.addEventListener('timeupdate', () => {
-//     if (audio.currentTime > audio.duration / 2) {
-//         audio.pause();
-
-//         let a = audio.playbackRate;
-
-//         let currentChap = Number(audio.getAttribute('src').split('/')[1].split('.')[0]);
-//         audio.src = `audio/${currentChap+1}.mp3`;
-//         chaper.innerHTML = currentChap + 1;
-
-//         audio.play();
-//         audio.playbackRate = a;
-//     }
-// })
+}
